@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:invoice_genarator/Utils/variables.dart';
 
+import '../Utils/Modlclass.dart';
+
 class Homescreen extends StatefulWidget {
   const Homescreen({Key? key}) : super(key: key);
 
@@ -12,31 +14,19 @@ class Homescreen extends StatefulWidget {
 class _HomescreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
         child: Scaffold(
       floatingActionButton: Align(
         alignment: Alignment.bottomRight,
         child: FloatingActionButton(
-          onPressed: () {
-            Navigator.pushNamed(context, 'add').then(
-              (value) => setState(() {}),
-            );
-          },
-          child: Container(
-            height: 60,
-            width: 60,
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(60),
-            ),
-            alignment: Alignment.center,
-            child: Icon(
-              Icons.add,
-              color: Colors.white,
-              size: 50,
-            ),
-          ),
-        ),
+            backgroundColor: Colors.black,
+            onPressed: () {
+              Navigator.pushNamed(context, 'add').then(
+                (value) => setState(() {}),
+              );
+            },
+            child: Icon(Icons.add)),
       ),
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -46,30 +36,79 @@ class _HomescreenState extends State<Homescreen> {
         ),
       ),
       body: ListView.builder(
-        itemCount: productName.length,
+        itemCount: productPrice.length,
         itemBuilder: (context, index) {
-          Cont(productName[index],productPrice[index]);
+          return Cont(productName[index], productPrice[index],index);
         },
       ),
     ));
   }
 
-  Widget Cont(String pname,String pprice) {
+  Widget Cont(String SmartproductName, String SmartproductPrice,int inde) {
     return Container(
       margin: EdgeInsets.all(5),
       padding: EdgeInsets.all(15),
-      height: 60,
+      height: 70,
       width: double.infinity,
-      child: Row(
-        children: [
-          Text("$pname"),
-          Text("$pprice"),
-        ],
-      ),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: Colors.white,
           border: Border.all(color: Colors.black, width: 2)),
+      child: Row(
+        children: [
+          Text("$SmartproductName"),
+          Expanded(child: SizedBox()),
+          Text("$SmartproductPrice"),
+          SizedBox(
+            width: 10,
+          ),
+          PopupMenuButton(
+            // onSelected: (value) {
+            //   value = popupmenu;
+            // },
+           //enabled: popupmenu!,
+            itemBuilder: (context) {
+              return [
+                PopupMenuItem(
+                    onTap: (){
+
+                    },
+                    child: Row(
+                  children: [
+                    IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text("Edit"),
+                  ],
+                )),
+                PopupMenuItem(
+                    onTap: (){
+                      setState(() {
+                        productName.removeAt(inde);
+                      });
+                    },
+                    child: Row(
+                  children: [
+                    Icon(
+                      Icons.delete,
+                      color: Colors.red,
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      "Delete",
+                      style: TextStyle(color: Colors.red),
+                    )
+                  ],
+                )),
+              ];
+            },
+            icon: Icon(Icons.more_vert),
+          )
+        ],
+      ),
     );
   }
 }

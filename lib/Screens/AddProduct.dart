@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_genarator/Utils/variables.dart';
 
+import '../Utils/Modlclass.dart';
+
 class AddProduct extends StatefulWidget {
   const AddProduct({Key? key}) : super(key: key);
 
@@ -11,6 +13,8 @@ class AddProduct extends StatefulWidget {
 class _AddProductState extends State<AddProduct> {
   @override
   Widget build(BuildContext context) {
+    data d1 = ModalRoute.of(context)!.settings.arguments as data;
+
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
@@ -19,6 +23,8 @@ class _AddProductState extends State<AddProduct> {
             onPressed: () {
               Navigator.pop(context);
               setState(() {
+                d1.productName?.add(addProductName.text);
+                d1.productPrice?.add(addProductPrice.text);
                 productName.add(addProductName.text);
                 productPrice.add(addProductPrice.text);
               });

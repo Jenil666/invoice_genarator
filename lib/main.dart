@@ -7,6 +7,7 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
+      //initialRoute: 'add',
       routes: {
         '/':(context)=>Homescreen(),
         'add':(context)=>AddProduct(),

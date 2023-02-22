@@ -11,80 +11,158 @@ class AddProduct extends StatefulWidget {
 }
 
 class _AddProductState extends State<AddProduct> {
+
+  TextEditingController addProductName = TextEditingController();
+  TextEditingController addProductPrice = TextEditingController();
+  data d1 = data();
+
   @override
   Widget build(BuildContext context) {
-    data d1 = ModalRoute.of(context)!.settings.arguments as data;
-
     return SafeArea(
-        child: Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-              setState(() {
-                d1.productName?.add(addProductName.text);
-                d1.productPrice?.add(addProductPrice.text);
-                productName.add(addProductName.text);
-                productPrice.add(addProductPrice.text);
-              });
-              print(productPrice);
-              print(productName);
-              addProductPrice.clear();
-              addProductName.clear();
-            },
-            icon: Icon(
-              Icons.done,
-              color: Colors.white,
+      child: Scaffold(
+        appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () {
+                // d1.productPrice!.add(addProductPrice.text);
+                // d1.productName!.add(addProductName.text);
+                print(addProductPrice.text);
+                print("${d1.productName}            ${d1.productPrice}");
+                Navigator.pop(context);
+                // setState(() {
+                //   d1.productName!.add(addProductName.text);
+                //   d1.productPrice!.add(addProductPrice.text);
+                // });
+                // addProductPrice.clear();
+                // addProductName.clear();
+              },
+              icon: Icon(
+                Icons.done,
+                color: Colors.white,
+              ),
             ),
-          ),
-          SizedBox(
-            width: 15,
-          ),
-        ],
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-              addProductPrice.clear();
-              addProductName.clear();
-            },
-            icon: Icon(
-              Icons.cancel,
-              color: Colors.white,
-            )),
-        backgroundColor: Colors.black,
-        title: Text("Add Product Details"),
-        centerTitle: true,
+            SizedBox(
+              width: 15,
+            ),
+          ],
+          leading: IconButton(
+              onPressed: () {
+                //Navigator.pop(context);
+                addProductPrice.clear();
+                addProductName.clear();
+              },
+              icon: Icon(
+                Icons.cancel,
+                color: Colors.white,
+              )),
+          backgroundColor: Colors.black,
+          title: Text("Add Product Details"),
+          centerTitle: true,
+        ),
+        body: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(10),
+              child: TextField(
+                controller: addProductName,
+                decoration: InputDecoration(
+                    hintText: "Add Product Name",
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 2)),
+                    disabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 2))),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(10),
+              child: TextField(
+                controller: addProductPrice,
+                decoration: InputDecoration(
+                    hintText: "Add Product Price",
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 2)),
+                    disabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 2))),
+                keyboardType: TextInputType.phone,
+              ),
+            ),
+
+            // Expanded(
+            //   child: ListView.builder(
+            //     itemCount: d1.productName?.length,
+            //   itemBuilder: (context, index) {
+            //     Cont();
+            //   },),
+            // )
+          ],
+        ),
       ),
-      body: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              controller: addProductName,
-              decoration: InputDecoration(
-                  hintText: "Add Product Name",
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black, width: 2)),
-                  disabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black, width: 2))),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              controller: addProductPrice,
-              decoration: InputDecoration(
-                  hintText: "Add Product Price",
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black, width: 2)),
-                  disabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black, width: 2))),
-              keyboardType: TextInputType.phone,
-            ),
-          ),
-        ],
-      ),
-    ));
+    );
   }
+  // Widget Cont({String? smartProductName, String? smartProductPrice, int? inde})
+  // {
+  //   return Container(
+  //     margin: EdgeInsets.all(5),
+  //     padding: EdgeInsets.all(15),
+  //     height: 70,
+  //     width: double.infinity,
+  //     decoration: BoxDecoration(
+  //         borderRadius: BorderRadius.circular(20),
+  //         color: Colors.white,
+  //         border: Border.all(color: Colors.black, width: 2)),
+  //     child: Row(
+  //       children: [
+  //         Text("$smartProductName"),
+  //         Expanded(child: SizedBox()),
+  //         Text("$smartProductPrice"),
+  //         SizedBox(
+  //           width: 10,
+  //         ),
+  //         PopupMenuButton(
+  //           itemBuilder: (context) {
+  //             return [
+  //               PopupMenuItem(
+  //                   onTap: () {},
+  //                   child: Row(
+  //                     children: [
+  //                       IconButton(
+  //                           onPressed: () {}, icon: Icon(Icons.edit)),
+  //                       SizedBox(
+  //                         width: 5,
+  //                       ),
+  //                       Text("Edit"),
+  //                     ],
+  //                   )),
+  //               PopupMenuItem(
+  //                 onTap: () {
+  //                   setState(() {
+  //                     data d1 = data();
+  //                     // d1.productName!.removeAt(inde);
+  //                     // d1.productPrice!.removeAt(inde);
+  //                   });
+  //                 },
+  //                 child: Row(
+  //                   children: [
+  //                     Icon(
+  //                       Icons.delete,
+  //                       color: Colors.red,
+  //                     ),
+  //                     SizedBox(
+  //                       width: 5,
+  //                     ),
+  //                     Text(
+  //                       "Delete",
+  //                       style: TextStyle(color: Colors.red),
+  //                     )
+  //                   ],
+  //                 ),
+  //               ),
+  //             ];
+  //           },
+  //           icon: Icon(Icons.more_vert),
+  //         )
+  //       ],
+  //     ),
+  //   );
+  // }
 }

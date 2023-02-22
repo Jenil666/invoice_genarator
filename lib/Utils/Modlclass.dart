@@ -1,6 +1,6 @@
 class data
 {
-  List? productName=[],productPrice=[];
+  String? name,price;
 
-  data({this.productName, this.productPrice});
+  data({this.name, this.price});
 }

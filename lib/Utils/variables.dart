@@ -1,15 +1,3 @@
-//
-// import 'package:flutter/cupertino.dart';
-//
+  import 'Modlclass.dart';
 
-//
-//
-//
-//
-// // List productName = [];
-// // List productPrice = [];
-//
-//
-//
-//
-// // bool? popupmenu=true;
+List<data> data1 = [];

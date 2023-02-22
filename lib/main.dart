@@ -7,7 +7,7 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      //initialRoute: 'add',
+      //initialRoute: 'invo',
       routes: {
         '/':(context)=>Homescreen(),
         'add':(context)=>AddProduct(),

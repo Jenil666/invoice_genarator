@@ -14,8 +14,6 @@ class _AddProductState extends State<AddProduct> {
 
   TextEditingController addProductName = TextEditingController();
   TextEditingController addProductPrice = TextEditingController();
-  data d1 = data();
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,17 +22,11 @@ class _AddProductState extends State<AddProduct> {
           actions: [
             IconButton(
               onPressed: () {
-                // d1.productPrice!.add(addProductPrice.text);
-                // d1.productName!.add(addProductName.text);
-                print(addProductPrice.text);
-                print("${d1.productName}            ${d1.productPrice}");
                 Navigator.pop(context);
-                // setState(() {
-                //   d1.productName!.add(addProductName.text);
-                //   d1.productPrice!.add(addProductPrice.text);
-                // });
-                // addProductPrice.clear();
-                // addProductName.clear();
+                data d1 = data(name: addProductName.text,price: addProductPrice.text);
+                data1.add(d1);
+                addProductPrice.clear();
+                addProductName.clear();
               },
               icon: Icon(
                 Icons.done,
@@ -47,7 +39,7 @@ class _AddProductState extends State<AddProduct> {
           ],
           leading: IconButton(
               onPressed: () {
-                //Navigator.pop(context);
+                Navigator.pop(context);
                 addProductPrice.clear();
                 addProductName.clear();
               },
@@ -87,13 +79,7 @@ class _AddProductState extends State<AddProduct> {
               ),
             ),
 
-            // Expanded(
-            //   child: ListView.builder(
-            //     itemCount: d1.productName?.length,
-            //   itemBuilder: (context, index) {
-            //     Cont();
-            //   },),
-            // )
+
           ],
         ),
       ),

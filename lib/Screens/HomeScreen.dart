@@ -4,11 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../Utils/Modlclass.dart';
 import '../Utils/variables.dart';
-import '../Utils/variables.dart';
-import '../Utils/variables.dart';
-import '../Utils/variables.dart';
-import '../Utils/variables.dart';
-import '../Utils/variables.dart';
+
 
 class Homescreen extends StatefulWidget {
   const Homescreen({Key? key}) : super(key: key);
@@ -19,10 +15,8 @@ class Homescreen extends StatefulWidget {
 
 class _HomescreenState extends State<Homescreen> {
 
-
   @override
   Widget build(BuildContext context) {
-    //data d1 = ModalRoute.of(context)!.settings.arguments as data;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -42,10 +36,8 @@ class _HomescreenState extends State<Homescreen> {
                     prices.add(sum1);
 
 
-                    x1 = int.parse(prices[i]);
-                    sum2 = (sum2 + x1) as int;
+                    sum2 = (sum2 + sum1);
                   }
-                print("@@@@@@@@@@@@@@@@@@@@@@@@@@@  $sum1");
               });
               Navigator.pushNamed(context, 'invo');
             }, icon: Icon(Icons.done))
@@ -59,8 +51,9 @@ class _HomescreenState extends State<Homescreen> {
         body: ListView.builder(
           itemCount: data1.length,
           itemBuilder: (context, index) {
+            inde = index;
             return
-              Cont(data1[index], index);
+              Cont(data1[index],);
           },),
         floatingActionButton: FloatingActionButton(
             backgroundColor: Colors.black,
@@ -73,7 +66,7 @@ class _HomescreenState extends State<Homescreen> {
       ),
     );
   }
-  Widget Cont(data d, int inde) {
+  Widget Cont(data d,) {
     TextEditingController updatedname = TextEditingController(text: "${d.name}");
     TextEditingController updatedprice = TextEditingController(text: "${d.price}");
     TextEditingController updatedquantity = TextEditingController(text: "${d.quantity}");

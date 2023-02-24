@@ -69,15 +69,15 @@ class _InvoiceState extends State<Invoice> {
                           const SizedBox(width: 30,),
                           const Text("Total",
                               style: TextStyle(color: Colors.black, fontSize: 20)),
-
                           const Spacer(),
                           Text(
-                            "$sum2",
+                            "₹$sum2",
                             style: const TextStyle(color: Colors.black, fontSize: 20),
                           ),
                           const SizedBox(width: 30,),
                         ],
                       ),
+                      SizedBox(height: 20,),
                       Row(
                         children: [
                           const SizedBox(width: 30,),
@@ -85,7 +85,7 @@ class _InvoiceState extends State<Invoice> {
                               style: TextStyle(color: Colors.black, fontSize: 20)),
                           const Spacer(),
                           Text(
-                            "${(sum2*15)/100}",
+                            "₹${(sum2*15)/100}",
                             style:
                             const TextStyle(color: Colors.black, fontSize: 20),
                           ),
@@ -103,13 +103,13 @@ class _InvoiceState extends State<Invoice> {
 
                           const Spacer(),
                           Text(
-                            "${sum + (sum*15)/100}",
+                            "₹${sum2 + (sum2*15)/100}",
                             style: const TextStyle(color: Colors.black, fontSize: 20),
                           ),
                           const SizedBox(width: 30,),
                         ],
                       ),
-                      const Expanded(child: SizedBox()),
+                      SizedBox(height: 80,),
                     ],
                   ),
                 ),

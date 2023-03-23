@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 
 import '../Utils/Modlclass.dart';
 import '../Utils/variables.dart';
+import '../Utils/variables.dart';
+import '../Utils/variables.dart';
+import '../Utils/variables.dart';
+import '../Utils/variables.dart';
+import '../Utils/variables.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({Key? key}) : super(key: key);
@@ -14,13 +19,34 @@ class Homescreen extends StatefulWidget {
 
 class _HomescreenState extends State<Homescreen> {
 
+
   @override
   Widget build(BuildContext context) {
+    //data d1 = ModalRoute.of(context)!.settings.arguments as data;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           actions: [
             IconButton(onPressed: () {
+              setState(() {
+                for(i=0; i<data1.length; i++)
+                  {
+                    z = int.parse(data1[i].price!);
+                    sum = (sum + z) as int;
+
+                    x = int.parse(data1[i].quantity!);
+                    sum1 = (x*z);
+
+
+
+                    prices.add(sum1);
+
+
+                    x1 = int.parse(prices[i]);
+                    sum2 = (sum2 + x1) as int;
+                  }
+                print("@@@@@@@@@@@@@@@@@@@@@@@@@@@  $sum1");
+              });
               Navigator.pushNamed(context, 'invo');
             }, icon: Icon(Icons.done))
           ],
@@ -50,6 +76,7 @@ class _HomescreenState extends State<Homescreen> {
   Widget Cont(data d, int inde) {
     TextEditingController updatedname = TextEditingController(text: "${d.name}");
     TextEditingController updatedprice = TextEditingController(text: "${d.price}");
+    TextEditingController updatedquantity = TextEditingController(text: "${d.quantity}");
     return Container(
       margin: EdgeInsets.all(5),
       padding: EdgeInsets.all(15),
@@ -64,7 +91,11 @@ class _HomescreenState extends State<Homescreen> {
           SizedBox(width: 10,),
           Text("${d.name}",style: TextStyle(fontSize: 20),),
           Expanded(child: SizedBox()),
-          Text("${d.price}"),
+          Text("₹${d.price}"),
+          SizedBox(
+            width: 30,
+          ),
+          Text("${d.quantity}"),
           SizedBox(
             width: 30,
           ),
@@ -85,6 +116,7 @@ class _HomescreenState extends State<Homescreen> {
                                         setState(() {
                                           d.name = updatedname.text;
                                           d.price = updatedprice.text;
+                                          d.quantity = updatedquantity.text;
                                         });
                                         Navigator.pop(context);
                                       } ,
@@ -116,12 +148,16 @@ class _HomescreenState extends State<Homescreen> {
                                     ),
                                   ],
                                   content: Column(
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
                                       TextField(
                                         controller: updatedname,
                                       ),
                                       TextField(
                                         controller: updatedprice,
+                                      ),
+                                      TextField(
+                                        controller: updatedquantity,
                                       ),
                                     ],
                                   ),

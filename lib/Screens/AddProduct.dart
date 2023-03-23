@@ -12,9 +12,12 @@ class AddProduct extends StatefulWidget {
 
 class _AddProductState extends State<AddProduct> {
 
+  List<data> AllData = [];
   TextEditingController addProductName = TextEditingController();
   TextEditingController addProductPrice = TextEditingController();
+  TextEditingController addProductquantity= TextEditingController();
   @override
+
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -23,10 +26,11 @@ class _AddProductState extends State<AddProduct> {
             IconButton(
               onPressed: () {
                 Navigator.pop(context);
-                data d1 = data(name: addProductName.text,price: addProductPrice.text);
+                data d1 = data(name: addProductName.text,price: addProductPrice.text,quantity: addProductquantity.text);
                 data1.add(d1);
                 addProductPrice.clear();
                 addProductName.clear();
+                addProductquantity.clear();
               },
               icon: Icon(
                 Icons.done,
@@ -71,6 +75,19 @@ class _AddProductState extends State<AddProduct> {
                 controller: addProductPrice,
                 decoration: InputDecoration(
                     hintText: "Add Product Price",
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 2)),
+                    disabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black, width: 2))),
+                keyboardType: TextInputType.phone,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(10),
+              child: TextField(
+                controller: addProductquantity,
+                decoration: InputDecoration(
+                    hintText: "Add Product Quantity",
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.black, width: 2)),
                     disabledBorder: OutlineInputBorder(

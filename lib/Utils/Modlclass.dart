@@ -1,6 +1,6 @@
 class data
 {
-  String? name,price;
+  String? name,price,quantity;
 
-  data({this.name, this.price});
+  data({this.name, this.price,this.quantity});
 }
